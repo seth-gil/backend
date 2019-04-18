@@ -48,7 +48,7 @@ def NewProject():
 			  "description":desc,
 			  "thumbnail":None}
 
-	task_id = projects.insert_one(newprj)
+	task_id = projects.insert(newprj)
 
 	return task_id
 
