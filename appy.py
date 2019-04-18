@@ -41,11 +41,12 @@ def NewProject():
 	name = request.json["name"]
 	desc = request.json["description"]
 
+	print ("hello world")
 	print (name,desc)
 
 	newprj = {"name":name,
 			  "description":"Project description",
-			  "Thumbnail":"root/" + task_id + "/1.jpg"}
+			  "thumbnail":"root/" + task_id + "/1.jpg"}
 
 	task_id = projects.insert_one(newprj)
 
