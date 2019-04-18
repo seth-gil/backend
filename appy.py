@@ -78,7 +78,7 @@ def Animate():
 
 	i = 0
 	for file in request.files.getlist("files[]"):
-		file.save(os.path.join(task_id,str(i)+".jpg"))
+		file.save(os.path.join("root",task_id,str(i)+".jpg"))
 		i = i+1
 
 	AnimateFolder(task_id,task_id)
