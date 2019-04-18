@@ -88,11 +88,10 @@ def Animate():
 def project(project_id):
 	myquery = {"_id":project_id}
 
-	ret = projects.find(myquery)
+	ret = projects.find(myquery).toArray()
 
-	print (ret)
 
-	return dumps(ret)
+	return dumps(ret[0])
 
 @app.route("/api/v1/test",methods=["GET"])
 def test():
