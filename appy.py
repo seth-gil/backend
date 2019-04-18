@@ -38,8 +38,8 @@ def AnimateFolder(imgFolder,video):
 @app.route("/api/v1/project",methods=["POST"])
 def NewProject():
 
-	name = request.form["name"]
-	desc = request.form["description"]
+	name = request.json["name"]
+	desc = request.json["description"]
 
 	newprj = {"name":name,
 			  "description":"Project description",
@@ -52,6 +52,7 @@ def NewProject():
 @app.route("/api/v1/upload",methods=["POST"])
 def Animate():
 
+	task_id = request.form["id"]
 	try:
 		request.files
 		None
