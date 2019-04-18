@@ -50,8 +50,6 @@ def NewProject():
 
 	task_id = projects.insert_one(newprj)
 
-	ret = {"id":str(task_id.inserted_id)} 
-
 	return task_id.inserted_id
 
 @app.route("/api/v1/upload",methods=["POST"])
