@@ -38,6 +38,11 @@ def AnimateFolder(imgFolder,video):
 @app.route("/api/v1/project",methods=["POST"])
 def NewProject():
 
+	print (request.json)
+	print (request.form)
+	print (request.args)
+	print (request.files)
+
 	name = request.json["name"]
 	desc = request.json["description"]
 
