@@ -1,6 +1,6 @@
 # Main Flask container
 
-from flask import Flask, send_from_directory, jsonify, request
+from flask import Flask, send_from_directory, jsonify, request, objectid
 from flask_cors import CORS
 import os
 import cv2
@@ -52,7 +52,7 @@ def NewProject():
 
 	ret = {"id":str(task_id.inserted_id)} 
 
-	return task_id.toString()
+	return task_id.inserted_id
 
 @app.route("/api/v1/upload",methods=["POST"])
 def Animate():
