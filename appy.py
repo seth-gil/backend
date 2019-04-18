@@ -6,8 +6,14 @@ import os
 import cv2
 import pymongo
 
+# Flask setup
 app = Flask(__name__, static_folder='root/')
 CORS(app);
+
+# Mongodb setup
+client = pymongo.MongoClient("mongodb://localhost:27017/")
+mdb = client["mdb"]
+projects = mdb["projects"]
 
 # Animates all files in a folder 
 def AnimateFolder(imgFolder,video):
@@ -32,7 +38,6 @@ def AnimateFolder(imgFolder,video):
 
 @app.route("/api/v1/upload",methods=["POST"])
 def Animate():
-	print(request.form["id"])
 
 	task_id = request.form["id"]
 	try:
@@ -40,16 +45,24 @@ def Animate():
 		None
 	except:
 		abort(400)
-	if not os.path.exists(task_id):
-		os.makedirs(task_id)
+
+	if not os.path.exists("root/"+task_id):
+		os.makedirs("root/"+task_id)
 
 	i = 0
 	for file in request.files.getlist("files[]"):
 		file.save(os.path.join(task_id,str(i)+".jpg"))
 		i = i+1
-	print("\n\n\n"+str(request.files.getlist("request"))+"\n\n\n")
 
 	AnimateFolder(task_id,task_id)
+
+	newprj = {"_id":task_id,
+			  "name":task_id,
+			  "description":"Project description",
+			  "Thumbnail":"root/" + task_id + "/1.jpg"}
+
+	projects.insert_one(sample)
+
 	return ("success")
 
 @app.route("/api/v1/project/<string:project_id>",methods=["GET"])
