@@ -64,7 +64,7 @@ def test():
 	return "success"
 
 # Any non API requests ~ Gil
-@app.route('/', defaults={'path': ''})
+@app.route('/', defaults={'path': 'root'})
 @app.route('/<path:path>')
 def serve(path):
     if path != "" and os.path.exists(app.static_folder + path):
