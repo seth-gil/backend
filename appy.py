@@ -50,14 +50,14 @@ def NewProject():
 
 	task_id = projects.insert(newprj)
 
-	try: print (task_id)
-	except: print("1")
-	try: print (task_id.inserted_id)
-	except: print("1")
-	try: print (task_id.str)
-	except: print("1")
-	try: print (str(task_id))
-	except: print("1")
+	# try: print (task_id)
+	# except: print("1")
+	# try: print (task_id.inserted_id)
+	# except: print("1")
+	# try: print (task_id.str)
+	# except: print("1")
+	# try: print (str(task_id))
+	# except: print("1")
 
 	return str(task_id)
 
