@@ -80,8 +80,8 @@ def Animate():
 def project(project_id):
 	myquery = {"_id":project_id}
 
-	print projects.find(myquery)
-	
+	print (projects.find(myquery))
+
 	return jsonify(projects.find(myquery))
 
 @app.route("/api/v1/test",methods=["GET"])
