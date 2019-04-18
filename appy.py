@@ -1,12 +1,12 @@
 # Main Flask container
 
-from flask import Flask, jsonify, request
+from flask import Flask, send_from_directory, jsonify, request
 from flask_cors import CORS
 import os
 import cv2
 import pymongo
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='/')
 CORS(app);
 
 # Animates all files in a folder 
@@ -62,6 +62,15 @@ def project(project_id):
 @app.route("/api/v1/test",methods=["GET"])
 def test():
 	return "success"
+
+# Any non API requests ~ Gil
+@app.route('/', defaults={'path': ''})
+@app.route('/<path:path>')
+def serve(path):
+    if path != "" and os.path.exists(app.static_folder + path):
+        return send_from_directory(app.static_folder, path)
+    else:
+        abort(404)
 
 if __name__ == "__main__":
 	app.run(host='0.0.0.0',port=5000,debug=True)  # delet when deploying
