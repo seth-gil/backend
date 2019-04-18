@@ -29,7 +29,7 @@ def AnimateFolder(imgFolder,video):
 	video = cv2.VideoWriter(vidPathA, 0, 1, (width,height))
 
 	for image in images:
-		video.write(cv2.imread(os.path.join(imgFolder, image)))
+		video.write(cv2.imread(os.path.join("root",imgFolder, image)))
 
 	video.release()
 
