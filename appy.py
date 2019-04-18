@@ -57,7 +57,7 @@ def NewProject():
 
 	ret = {"id":str(task_id.inserted_id)} 
 
-	return (jsonify (ret))
+	return str(task_id)
 
 @app.route("/api/v1/upload",methods=["POST"])
 def Animate():
