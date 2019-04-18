@@ -1,0 +1,20 @@
+POST /upload    
+    data: { files[], id } (project id)  
+    -> store files in [id] directory
+    -> update database (?)        
+
+POST /project  
+    data: { name } (project name)         
+    -> create new project in database
+    -> return project JSON
+
+GET /project/:id
+    -> get project from database
+    -> return project JSON
+
+
+
+Project needs:
+id
+name
+first frame location
