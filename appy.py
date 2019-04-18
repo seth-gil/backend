@@ -6,7 +6,7 @@ import os
 import cv2
 import pymongo
 
-app = Flask(__name__, static_folder='root')
+app = Flask(__name__, static_folder='root/')
 CORS(app);
 
 # Animates all files in a folder 
