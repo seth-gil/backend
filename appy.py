@@ -90,6 +90,8 @@ def project(project_id):
 
 	ret = projects.find(myquery)
 
+	for x in ret:
+		print (x)
 
 	return dumps(ret[0])
 
