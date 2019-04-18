@@ -1,6 +1,6 @@
 # Main Flask container
 
-from flask import Flask, send_from_directory, jsonify, request, objectid
+from flask import Flask, send_from_directory, jsonify, request
 from flask_cors import CORS
 import os
 import cv2
