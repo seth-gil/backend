@@ -95,7 +95,7 @@ def project(project_id):
 	for x in ret:
 		print (x)
 
-	return dumps(ret)
+	return dumps(ret[0])
 
 @app.route("/api/v1/test",methods=["GET"])
 def test():
