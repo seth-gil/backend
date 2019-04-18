@@ -88,9 +88,9 @@ def Animate():
 def project(project_id):
 	myquery = {"_id":project_id}
 
-	print (projects.find(myquery))
-
 	ret = projects.find(myquery)
+
+	print (ret)
 
 	return dumps(ret)
 
