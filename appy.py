@@ -38,11 +38,6 @@ def AnimateFolder(imgFolder,video):
 @app.route("/api/v1/project",methods=["POST"])
 def NewProject():
 
-	print (request.json)
-	print (request.form)
-	print (request.args)
-	print (request.files)
-
 	name = request.json["name"]
 	desc = request.json["description"]
 
@@ -50,14 +45,14 @@ def NewProject():
 	print (name,desc)
 
 	newprj = {"name":name,
-			  "description":"Project description",
+			  "description":desc,
 			  "thumbnail":None}
 
 	task_id = projects.insert_one(newprj)
 
 	ret = {"id":str(task_id.inserted_id)} 
 
-	return str(task_id)
+	return task_id.toString()
 
 @app.route("/api/v1/upload",methods=["POST"])
 def Animate():
@@ -83,10 +78,11 @@ def Animate():
 
 @app.route("/api/v1/project/<string:project_id>",methods=["GET"])
 def project(project_id):
-	name = "NamePlaceholder"
-	desc = "DescPlaceholder"
-	thumb = "root/default/1.jpg"
-	return jsonify({"name":name,"description":desc,"thumbnail":thumb,"id":"default"})
+	myquery = {"_id":project_id}
+
+	print projects.find(myquery)
+	
+	return jsonify(projects.find(myquery))
 
 @app.route("/api/v1/test",methods=["GET"])
 def test():
