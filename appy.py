@@ -46,7 +46,7 @@ def NewProject():
 
 	newprj = {"name":name,
 			  "description":"Project description",
-			  "thumbnail":"root/" + task_id + "/1.jpg"}
+			  "thumbnail":None}
 
 	task_id = projects.insert_one(newprj)
 
