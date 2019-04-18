@@ -56,7 +56,7 @@ def Animate():
 def project(project_id):
 	name = "NamePlaceholder"
 	desc = "DescPlaceholder"
-	thumb = "default/1.jpg"
+	thumb = "root/default/1.jpg"
 	return jsonify({"name":name,"description":desc,"thumbnail":thumb,"id":"default"})
 
 @app.route("/api/v1/test",methods=["GET"])
