@@ -92,7 +92,7 @@ def project(project_id):
 
 	ret = projects.find(myquery)
 
-	return json.dumps(ret)
+	return dumps(ret)
 
 @app.route("/api/v1/test",methods=["GET"])
 def test():
