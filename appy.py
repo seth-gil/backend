@@ -6,7 +6,7 @@ import os
 import cv2
 import pymongo
 
-app = Flask(__name__, static_folder='/')
+app = Flask(__name__, static_folder='root')
 CORS(app);
 
 # Animates all files in a folder 
@@ -64,13 +64,13 @@ def test():
 	return "success"
 
 # Any non API requests ~ Gil
-@app.route('/', defaults={'path': 'root'})
+@app.route('/', defaults={'path': ''})
 @app.route('/<path:path>')
 def serve(path):
     if path != "" and os.path.exists(app.static_folder + path):
         return send_from_directory(app.static_folder, path)
     else:
-        return "404: File not found";
+        return "404: File not found at " + path;
 
 if __name__ == "__main__":
 	app.run(host='0.0.0.0',port=5000,debug=True)  # delet when deploying
