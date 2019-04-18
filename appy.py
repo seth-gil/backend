@@ -73,4 +73,4 @@ def serve(path):
         abort(404)
 
 if __name__ == "__main__":
-	app.run(host='192.168.1.113',port=5000,debug=True)  # delet when deploying
+	app.run(host='0.0.0.0',port=5000,debug=True)  # delet when deploying
