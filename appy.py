@@ -12,11 +12,11 @@ CORS(app);
 # Animates all files in a folder 
 def AnimateFolder(imgFolder,video):
 	images = [img for img in os.listdir(imgFolder) if img.endswith(".jpg")]
-	frame = cv2.imread(os.path.join(imgFolder, images[0]))
+	frame = cv2.imread(os.path.join("root",imgFolder, images[0]))
 	height, width, layers = frame.shape
 
-	vidPathA = os.path.join(imgFolder,video+".avi")
-	vidPathM = os.path.join(imgFolder,"preview"+".mp4")
+	vidPathA = os.path.join("root",imgFolder,video+".avi")
+	vidPathM = os.path.join("root",imgFolder,"preview"+".mp4")
 
 	video = cv2.VideoWriter(vidPathA, 0, 1, (width,height))
 
