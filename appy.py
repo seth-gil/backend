@@ -19,7 +19,7 @@ projects = mdb["projects"]
 
 # Animates all files in a folder 
 def AnimateFolder(imgFolder,video):
-	images = [img for img in os.listdir(imgFolder) if img.endswith(".jpg")]
+	images = [img for img in os.listdir(os.path.join("root",imgFolder)) if img.endswith(".jpg")]
 	frame = cv2.imread(os.path.join("root",imgFolder, images[0]))
 	height, width, layers = frame.shape
 
