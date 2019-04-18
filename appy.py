@@ -12,11 +12,11 @@ CORS(app);
 # Animates all files in a folder 
 def AnimateFolder(imgFolder,video):
 	images = [img for img in os.listdir(imgFolder) if img.endswith(".jpg")]
-	frame = cv2.imread(os.path.join(imgFolder, images[0]))
+	frame = cv2.imread(os.path.join("root",imgFolder, images[0]))
 	height, width, layers = frame.shape
 
-	vidPathA = os.path.join(imgFolder,video+".avi")
-	vidPathM = os.path.join(imgFolder,"preview"+".mp4")
+	vidPathA = os.path.join("root",imgFolder,video+".avi")
+	vidPathM = os.path.join("root",imgFolder,"preview"+".mp4")
 
 	video = cv2.VideoWriter(vidPathA, 0, 1, (width,height))
 
@@ -73,4 +73,4 @@ def serve(path):
         abort(404)
 
 if __name__ == "__main__":
-	app.run(host='0.0.0.0',port=5000,debug=True)  # delet when deploying
+	app.run(host='192.168.1.113',port=5000,debug=True)  # delet when deploying
