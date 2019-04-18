@@ -18,7 +18,7 @@ mdb = client["mdb"]
 projects = mdb["projects"]
 
 # Animates all files in a folder 
-def AnimateFolder(imgFolder,video):
+def AnimateFolder(imgFolder,video,rate):
 	images = [img for img in os.listdir(os.path.join("root",imgFolder)) if img.endswith(".jpg")]
 	frame = cv2.imread(os.path.join("root",imgFolder, images[0]))
 	height, width, layers = frame.shape
@@ -26,10 +26,10 @@ def AnimateFolder(imgFolder,video):
 	vidPathA = os.path.join("root",imgFolder,video+".avi")
 	vidPathM = os.path.join("root",imgFolder,"preview"+".mp4")
 
-	video = cv2.VideoWriter(vidPathA, 0, 1, (width,height))
+	video = cv2.VideoWriter(vidPathA, 0, rate, (width,height))
 
 	for image in images:
-		video.write(cv2.imread(os.path.join("root",imgFolder, image)))
+		video.write(cv2.imread(os.path.join("root",imgFolder,image)))
 
 	video.release()
 
@@ -67,6 +67,7 @@ def NewProject():
 def Animate():
 
 	task_id = request.form["id"]
+	rate = request.form["framerate"]
 	try:
 		request.files
 		None
@@ -81,7 +82,7 @@ def Animate():
 		file.save(os.path.join("root",task_id,str(i)+".jpg"))
 		i = i+1
 
-	AnimateFolder(task_id,task_id)
+	AnimateFolder(task_id,task_id,rate)
 
 	return (task_id)
 
