@@ -50,12 +50,16 @@ def NewProject():
 
 	task_id = projects.insert(newprj)
 
-	print (task_id)
-	print (task_id.inserted_id)
-	print (task_id.str)
-	print (str(task_id))
+	try: print (task_id)
+	except: print("1")
+	try: print (task_id.inserted_id)
+	except: print("1")
+	try: print (task_id.str)
+	except: print("1")
+	try: print (str(task_id))
+	except: print("1")
 
-	return task_id.str
+	return str(task_id)
 
 @app.route("/api/v1/upload",methods=["POST"])
 def Animate():
