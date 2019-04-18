@@ -87,6 +87,7 @@ def Animate():
 
 @app.route("/api/v1/project/<string:project_id>",methods=["GET"])
 def project(project_id):
+	print (ObjectId(project_id))
 	myquery = {"_id":ObjectId(project_id)}
 
 	ret = projects.find(myquery)
