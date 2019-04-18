@@ -70,7 +70,7 @@ def serve(path):
     if path != "" and os.path.exists(app.static_folder + path):
         return send_from_directory(app.static_folder, path)
     else:
-        abort(404)
+        return "404: File not found";
 
 if __name__ == "__main__":
 	app.run(host='0.0.0.0',port=5000,debug=True)  # delet when deploying
