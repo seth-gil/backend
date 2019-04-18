@@ -33,7 +33,7 @@ def AnimateFolder(imgFolder,video,rate):
 
 	video.release()
 
-	os.system("ffmpeg -i " + vidPathA + " " + vidPathM)
+	os.system("ffmpeg -y -i " + vidPathA + " " + vidPathM)
 	os.remove(vidPathA)
 	return vidPathM
 
@@ -51,15 +51,6 @@ def NewProject():
 			  "thumbnail":None}
 
 	task_id = projects.insert(newprj)
-
-	# try: print (task_id)
-	# except: print("1")
-	# try: print (task_id.inserted_id)
-	# except: print("1")
-	# try: print (task_id.str)
-	# except: print("1")
-	# try: print (str(task_id))
-	# except: print("1")
 
 	return str(task_id)
 
