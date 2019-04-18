@@ -35,11 +35,23 @@ def AnimateFolder(imgFolder,video):
 	os.remove(vidPathA)
 	return vidPathM
 
+@app.route("/api/v1/project",methods=["POST"])
+def NewProject():
+
+	name = request.form["name"]
+	desc = request.form["description"]
+
+	newprj = {"name":name,
+			  "description":"Project description",
+			  "Thumbnail":"root/" + task_id + "/1.jpg"}
+
+	task_id = projects.insert_one(newprj)
+
+	return task_id
 
 @app.route("/api/v1/upload",methods=["POST"])
 def Animate():
 
-	task_id = request.form["id"]
 	try:
 		request.files
 		None
@@ -56,14 +68,7 @@ def Animate():
 
 	AnimateFolder(task_id,task_id)
 
-	newprj = {"_id":task_id,
-			  "name":task_id,
-			  "description":"Project description",
-			  "Thumbnail":"root/" + task_id + "/1.jpg"}
-
-	projects.insert_one(sample)
-
-	return ("success")
+	return (task_id)
 
 @app.route("/api/v1/project/<string:project_id>",methods=["GET"])
 def project(project_id):
