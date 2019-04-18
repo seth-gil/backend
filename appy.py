@@ -50,7 +50,7 @@ def NewProject():
 
 	task_id = projects.insert(newprj)
 
-	return task_id
+	return task_id.inserted_id
 
 @app.route("/api/v1/upload",methods=["POST"])
 def Animate():
