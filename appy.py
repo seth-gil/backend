@@ -5,6 +5,7 @@ from flask_cors import CORS
 import os
 import cv2
 import pymongo
+from bson.json_util import dumps
 
 # Flask setup
 app = Flask(__name__, static_folder='root/')
@@ -89,7 +90,9 @@ def project(project_id):
 
 	print (projects.find(myquery))
 
-	return jsonify(projects.find(myquery))
+	ret = projects.find(myquery)
+
+	return json.dumps(ret)
 
 @app.route("/api/v1/test",methods=["GET"])
 def test():
