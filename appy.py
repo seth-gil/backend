@@ -41,6 +41,8 @@ def NewProject():
 	name = request.json["name"]
 	desc = request.json["description"]
 
+	print (name,desc)
+
 	newprj = {"name":name,
 			  "description":"Project description",
 			  "Thumbnail":"root/" + task_id + "/1.jpg"}
