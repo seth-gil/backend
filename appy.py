@@ -29,14 +29,14 @@ def AnimateFolder(imgFolder,video,rate):
 	vidPathA = os.path.join("root",imgFolder,video+".avi")
 	vidPathM = os.path.join("root",imgFolder,"preview"+".mp4")
 
-	for item in os.listdir(os.path.join("root",imgFolder)):
-		print (item)
-		if os.path.isfile(os.path.join("root",imgFolder,item)):
-			im = Image.open(os.path.join("root",imgFolder,item))
-			imResize = im.resize((200,200), Image.ANTIALIAS)
-			imResize.save(os.path.join("root",imgFolder,item))
+	# for item in os.listdir(os.path.join("root",imgFolder)):
+	# 	print (item)
+	# 	if os.path.isfile(os.path.join("root",imgFolder,item)):
+	# 		im = Image.open(os.path.join("root",imgFolder,item))
+	# 		imResize = im.resize((200,200), Image.ANTIALIAS)
+	# 		imResize.save(os.path.join("root",imgFolder,item))
 
-	images = [img for img in os.listdir(os.path.join("root",imgFolder)) if img.endswith(".jpg")]
+	# images = [img for img in os.listdir(os.path.join("root",imgFolder)) if img.endswith(".jpg")]
 	frame = cv2.imread(os.path.join("root",imgFolder, images[0]))
 	height, width, layers = frame.shape
 
