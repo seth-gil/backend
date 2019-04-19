@@ -50,7 +50,9 @@ def NewProject():
 			  "description":desc,
 			  "thumbnail":None}
 
-	task_id = str(projects.insert(newprj))
+	task_id = projects.insert(newprj)
+
+	task_id = str(task_id)
 
 	print("\nNew project created\nName:%s\nDescription:\nFramerate:%s\nID:%s\n\n" % (name,desc,rate,task_id))
 
