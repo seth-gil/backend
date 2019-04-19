@@ -115,12 +115,8 @@ def test():
 @app.route("/api/v1/projects",methods=["GET"])
 def returnAll():
 	ret = projects.find()
-	print (ret)
-	retNice =[]
-	for x in ret:
-		retNice += [x]
 
-	return retNice
+	return json.dumps(ret)
 
 # Any non API requests ~ Gil
 @app.route('/', defaults={'path': ''})
