@@ -30,7 +30,7 @@ def AnimateFolder(imgFolder,video,rate):
 	for item in os.listdir(os.path.join("root",imgFolder)):
 		print (item)
 		if os.path.isfile(os.path.join("root",imgFolder,item)):
-			im = Image.open(os.path.join("root",imgFolder))
+			im = Image.open(os.path.join("root",imgFolder,item))
 			imResize = im.resize((200,200), Image.ANTIALIAS)
 			imResize.save(item, 'JPEG', quality=90)
 
