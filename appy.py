@@ -100,7 +100,10 @@ def NewProject():
 
 @app.route("/api/v1/project/<string:project_id>",methods=["GET"])
 def project(project_id):
-	query = {"_id":ObjectId(project_id)}
+	try:
+		query = {"_id":ObjectId(project_id)}
+	except:
+		abort(404)
 
 	ret = projects.find(query)
 
