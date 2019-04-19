@@ -44,9 +44,7 @@ def NewProject():
 
 	name = request.form["name"]
 	desc = request.form["description"]
-
-	print ("hello world")
-	print (name,desc)
+	rate = request.form["framerate"]
 
 	newprj = {"name":name,
 			  "description":desc,
@@ -54,7 +52,8 @@ def NewProject():
 
 	task_id = str(projects.insert(newprj))
 
-	rate = request.form["framerate"]
+	print("\nNew project created\nName:%s\nDescription:\nFramerate:%s\nID:%s\n\n" % (name,desc,rate,task_id))
+
 	try:
 		request.files
 		None
