@@ -85,7 +85,7 @@ def NewProject():
 
 	i = 0
 	for frame in frames:
-		frame.replace("^data:image/.+;base64,", "")
+		#frame.replace("^data:image/.+;base64,", "")
 		im = Image.open(BytesIO(base64.b64decode(frame)))
 		im.save(os.path.join("root",task_id,str(i)+".jpg"))
 
