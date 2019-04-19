@@ -7,6 +7,7 @@ import cv2
 import pymongo
 import base64
 import json
+import re
 from bson.objectid import ObjectId
 from PIL import Image
 from io import BytesIO
@@ -86,10 +87,8 @@ def NewProject():
 	i = 0
 	data = {}
 	for frame in frames:
-		#frame.replace("^data:image/.+;base64,", "")
-		data["img"] = frame
-		binary = BytesIO(base64.b64decode(frame))
-		im = Image.open(binary)
+		image_data = re.sub('^data:image/.+;base64,', '', frame)
+    	im = Image.open(BytesIO(base64.b64decode(image_data)))
 		im.save(os.path.join("root",task_id,str(i)+".jpg"))
 
 	AnimateFolder(task_id,task_id,int(rate))
