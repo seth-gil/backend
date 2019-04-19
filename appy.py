@@ -8,7 +8,8 @@ import pymongo
 import base64
 import json
 import re
-from bson.objectid import ObjectId, json_util
+from bson.objectid import ObjectId
+from bson import json_util
 from PIL import Image
 from io import BytesIO
 
