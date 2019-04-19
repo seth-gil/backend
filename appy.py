@@ -114,7 +114,7 @@ def test():
 
 @app.route("/api/v1/projects",methods=["GET"])
 def returnAll():
-	ret = projects.find()
+	ret = projects.find().to_list()
 
 	return json.dumps(ret)
 
