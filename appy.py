@@ -102,15 +102,16 @@ def NewProject():
 def project(project_id):
 	try:
 		query = {"_id":ObjectId(project_id)}
+		ret = projects.find(query)
+
+		niceRet = ret[0]
+		niceRet["_id"] = str(ret[0]["_id"])
+
+		return json.dumps(niceRet)
 	except:
 		abort(404)
 
-	ret = projects.find(query)
-
-	niceRet = ret[0]
-	niceRet["_id"] = str(ret[0]["_id"])
-
-	return json.dumps(niceRet)
+	
 
 @app.route("/api/v1/test",methods=["GET"])
 def test():
