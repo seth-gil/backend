@@ -103,10 +103,10 @@ def project(project_id):
 
 	ret = projects.find(query)
 
-	niceRet = ret
-	niceRet["_id"] = str(ret["_id"])
+	niceRet = ret[0]
+	niceRet["_id"] = str(ret[0]["_id"])
 
-	return json.dumps(niceRet[0])
+	return json.dumps(niceRet)
 
 @app.route("/api/v1/test",methods=["GET"])
 def test():
