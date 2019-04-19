@@ -88,7 +88,7 @@ def NewProject():
 	data = {}
 	for frame in frames:
 		image_data = re.sub('^data:image/.+;base64,', '', frame)
-    	im = Image.open(BytesIO(base64.b64decode(image_data)))
+		im = Image.open(BytesIO(base64.b64decode(image_data)))
 		im.save(os.path.join("root",task_id,str(i)+".jpg"))
 
 	AnimateFolder(task_id,task_id,int(rate))
