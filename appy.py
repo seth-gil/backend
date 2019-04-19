@@ -21,8 +21,6 @@ projects = mdb["projects"]
 # Animates all files in a folder 
 def AnimateFolder(imgFolder,video,rate):
 	images = [img for img in os.listdir(os.path.join("root",imgFolder)) if img.endswith(".jpg")]
-	frame = cv2.imread(os.path.join("root",imgFolder, images[0]))
-	height, width, layers = frame.shape
 
 	vidPathA = os.path.join("root",imgFolder,video+".avi")
 	vidPathM = os.path.join("root",imgFolder,"preview"+".mp4")
@@ -33,6 +31,10 @@ def AnimateFolder(imgFolder,video,rate):
 			im = Image.open(os.path.join("root",imgFolder,item))
 			imResize = im.resize((200,200), Image.ANTIALIAS)
 			imResize.save(os.path.join("root",imgFolder,item))
+
+	images = [img for img in os.listdir(os.path.join("root",imgFolder)) if img.endswith(".jpg")]
+	frame = cv2.imread(os.path.join("root",imgFolder, images[0]))
+	height, width, layers = frame.shape
 
 	video = cv2.VideoWriter(vidPathA, 0, rate, (width,height))
 
