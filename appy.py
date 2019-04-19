@@ -58,7 +58,7 @@ def NewProject():
 	name = request.json["name"]
 	desc = request.json["description"]
 	rate = request.json["framerate"]
-	frames = json.loads(request.json["frames"])
+	frames = request.json["frames"]
 
 	newprj = {"name":name,
 			  "description":desc,
