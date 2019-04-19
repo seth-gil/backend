@@ -54,7 +54,8 @@ def NewProject():
 
 	task_id = str(task_id)
 
-	print("\nNew project created\nName:%s\nDescription:\nFramerate:%s\nID:%s\n\n" % (name,desc,rate,task_id))
+	try: print("\nNew project created\nName:%s\nDescription:\nFramerate:%s\nID:%s\n\n" % (name,desc,rate,task_id))
+	except: print("ur print formatting sux") 
 
 	try:
 		request.files
