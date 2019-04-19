@@ -118,7 +118,7 @@ def returnAll():
 	ret = projects.find()
 	print (ret)
 
-	return bson.json_util.dumps(ret, sort_keys=True, default=json_util.default)
+	return json_util.dumps(ret)
 	return "please let the suffering end"
 
 # Any non API requests ~ Gil
