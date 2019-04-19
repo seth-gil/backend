@@ -8,7 +8,7 @@ import pymongo
 import base64
 import json
 import re
-from bson.objectid import ObjectId
+from bson.objectid import ObjectId, json_util
 from PIL import Image
 from io import BytesIO
 
@@ -115,10 +115,8 @@ def test():
 @app.route("/api/v1/projects",methods=["GET"])
 def returnAll():
 	ret = projects.find()
-	for x in range(ret.count()-1):
-		ret(x)["_id"] = str(ret(x)["_id"])
 
-	return json.dumps(ret)
+	return json.dumps(ret, sort_keys=True, default=json_util.default)
 
 # Any non API requests ~ Gil
 @app.route('/', defaults={'path': ''})
