@@ -5,9 +5,12 @@ from flask_cors import CORS
 import os
 import cv2
 import pymongo
+import base64
+import json
 from bson.objectid import ObjectId
-from bson.json_util import dumps
 from PIL import Image
+from io import BytesIO
+
 
 # Flask setup
 app = Flask(__name__, static_folder='root/')
@@ -50,9 +53,12 @@ def AnimateFolder(imgFolder,video,rate):
 @app.route("/api/v1/project",methods=["POST"])
 def NewProject():
 
-	name = request.form["name"]
-	desc = request.form["description"]
-	rate = request.form["framerate"]
+	#print (request.json)
+
+	name = request.json["name"]
+	desc = request.json["description"]
+	rate = request.json["framerate"]
+	frames = json.loads(request.json["frames"])
 
 	newprj = {"name":name,
 			  "description":desc,
@@ -72,10 +78,16 @@ def NewProject():
 	if not os.path.exists("root/"+task_id):
 		os.makedirs("root/"+task_id)
 
+	# i = 0
+	# for file in request.files.getlist("files[]"):
+	# 	file.save(os.path.join("root",task_id,str(i)+".jpg"))
+	# 	i = i+1
+
 	i = 0
-	for file in request.files.getlist("files[]"):
-		file.save(os.path.join("root",task_id,str(i)+".jpg"))
-		i = i+1
+	for frame in frames:
+		frame.replace("^data:image/.+;base64,", "")
+		im = Image.open(BytesIO(base64.b64decode(frame)))
+		im.save(os.path.join("root",task_id,str(i)+".jpg"))
 
 	AnimateFolder(task_id,task_id,int(rate))
 
@@ -87,7 +99,7 @@ def project(project_id):
 
 	ret = projects.find(query)
 
-	return dumps(ret[0])
+	return json.dumps(ret[0])
 
 @app.route("/api/v1/test",methods=["GET"])
 def test():
