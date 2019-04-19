@@ -7,6 +7,7 @@ import cv2
 import pymongo
 from bson.objectid import ObjectId
 from bson.json_util import dumps
+from PIL import Image
 
 # Flask setup
 app = Flask(__name__, static_folder='root/')
@@ -25,6 +26,11 @@ def AnimateFolder(imgFolder,video,rate):
 
 	vidPathA = os.path.join("root",imgFolder,video+".avi")
 	vidPathM = os.path.join("root",imgFolder,"preview"+".mp4")
+
+	for item in os.path.join("root",imgFolder):
+        im = Image.open(os.path.join("root",imgFolder))
+        imResize = im.resize((200,200), Image.ANTIALIAS)
+        imResize.save(item, 'JPEG', quality=90)
 
 	video = cv2.VideoWriter(vidPathA, 0, rate, (width,height))
 
