@@ -1,6 +1,6 @@
 # Main Flask container
 
-from flask import Flask, send_from_directory, jsonify, request
+from flask import Flask, send_from_directory, request
 from flask_cors import CORS
 import os
 import cv2
@@ -115,11 +115,10 @@ def test():
 @app.route("/api/v1/projects",methods=["GET"])
 def returnAll():
 	ret = projects.find()
-	niceRet = []
 	for x in ret:
-		niceRet.append(x)
+		x["_id"] = str(x["_id"])
 
-	return json.dumps(niceRet)
+	return dumps(ret)
 
 # Any non API requests ~ Gil
 @app.route('/', defaults={'path': ''})
