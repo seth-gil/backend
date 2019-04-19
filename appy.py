@@ -115,8 +115,8 @@ def test():
 @app.route("/api/v1/projects",methods=["GET"])
 def returnAll():
 	ret = projects.find()
-	for x in range(len(ret)):
-		ret(o)["_id"] = str(x["_id"])
+	for x in range(ret.count()-1):
+		ret(x)["_id"] = str(ret(x)["_id"])
 
 	return json.dumps(ret)
 
