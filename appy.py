@@ -28,6 +28,7 @@ def AnimateFolder(imgFolder,video,rate):
 	vidPathM = os.path.join("root",imgFolder,"preview"+".mp4")
 
 	for item in os.path.join("root",imgFolder):
+		print (item)
 		im = Image.open(os.path.join("root",imgFolder))
 		imResize = im.resize((200,200), Image.ANTIALIAS)
 		imResize.save(item, 'JPEG', quality=90)
