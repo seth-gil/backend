@@ -119,6 +119,7 @@ def returnAll():
 	print (ret)
 
 	#return json.dumps(ret, sort_keys=True, default=json_util.default)
+	return "please let the suffering end"
 
 # Any non API requests ~ Gil
 @app.route('/', defaults={'path': ''})
