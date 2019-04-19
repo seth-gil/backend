@@ -32,7 +32,7 @@ def AnimateFolder(imgFolder,video,rate):
 		if os.path.isfile(os.path.join("root",imgFolder,item)):
 			im = Image.open(os.path.join("root",imgFolder,item))
 			imResize = im.resize((200,200), Image.ANTIALIAS)
-			imResize.save(item, 'JPG', quality=90)
+			imResize.save(os.path.join("root",imgFolder,item))
 
 	video = cv2.VideoWriter(vidPathA, 0, rate, (width,height))
 
