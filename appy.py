@@ -35,7 +35,7 @@ def AnimateFolder(imgFolder,video,rate):
 
 	video.release()
 
-	os.system("ffmpeg -y -b 2500k -i " + vidPathA + " " + vidPathM)
+	os.system("ffmpeg -y -i " + vidPathA + " -b 2500k " + vidPathM)
 	os.remove(vidPathA)
 	return vidPathM
 
