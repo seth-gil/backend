@@ -86,7 +86,8 @@ def NewProject():
 
 	i = 0
 	for frame in frames:
-		#print (frame[20:])
+		try: print (frame[:20])
+		except: print (frame)
 		image_data = re.sub('^data:image/.+;base64,', '', frame)
 		#print (image_data[20:])
 		im = Image.open(BytesIO(base64.b64decode(image_data)))
