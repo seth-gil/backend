@@ -62,8 +62,7 @@ def NewProject():
 	frames = request.json["frames"]
 
 	newprj = {"name":name,
-			  "description":desc,
-			  "thumbnail":None}
+			  "description":desc}
 
 	task_id = projects.insert(newprj)
 	task_id = str(task_id)
@@ -112,6 +111,10 @@ def project(project_id):
 @app.route("/api/v1/test",methods=["GET"])
 def test():
 	return "success"
+
+@app.route("/api/v1/projects",methods=["GET"])
+def returnAll():
+	return projects.find()
 
 # Any non API requests ~ Gil
 @app.route('/', defaults={'path': ''})
