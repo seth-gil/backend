@@ -114,7 +114,8 @@ def test():
 
 @app.route("/api/v1/projects",methods=["GET"])
 def returnAll():
-	return projects.find()
+	ret = projects.find()
+	return ret
 
 # Any non API requests ~ Gil
 @app.route('/', defaults={'path': ''})
