@@ -42,8 +42,8 @@ def AnimateFolder(imgFolder,video,rate):
 @app.route("/api/v1/project",methods=["POST"])
 def NewProject():
 
-	name = request.json["name"]
-	desc = request.json["description"]
+	name = request.form["name"]
+	desc = request.form["description"]
 
 	print ("hello world")
 	print (name,desc)
@@ -52,14 +52,8 @@ def NewProject():
 			  "description":desc,
 			  "thumbnail":None}
 
-	task_id = projects.insert(newprj)
+	task_id = str(projects.insert(newprj))
 
-	return str(task_id)
-
-@app.route("/api/v1/upload",methods=["POST"])
-def Animate():
-
-	task_id = request.form["id"]
 	rate = request.form["framerate"]
 	try:
 		request.files
@@ -77,7 +71,7 @@ def Animate():
 
 	AnimateFolder(task_id,task_id,int(rate))
 
-	return (task_id)
+	return task_id
 
 @app.route("/api/v1/project/<string:project_id>",methods=["GET"])
 def project(project_id):
