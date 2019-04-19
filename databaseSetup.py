@@ -12,7 +12,6 @@ mdb["mdb"].drop()
 
 sample = {"_id":"default",
 		  "name":"name",
-		  "description":"Sample project",
-		  "Thumbnail":"root/default/1.jpg"}
+		  "description":"Sample project"}
 
 projects.insert_one(sample)
