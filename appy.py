@@ -118,7 +118,7 @@ def returnAll():
 	for x in ret:
 		x["_id"] = str(x["_id"])
 
-	return dumps(ret)
+	return json.dumps(ret)
 
 # Any non API requests ~ Gil
 @app.route('/', defaults={'path': ''})
