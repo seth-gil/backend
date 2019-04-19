@@ -51,11 +51,9 @@ def NewProject():
 			  "thumbnail":None}
 
 	task_id = projects.insert(newprj)
-
 	task_id = str(task_id)
 
-	try: print("\nNew project created\nName:%s\nDescription:%s\nFramerate:%s\nID:%s\n\n" % (name,desc,rate,task_id))
-	except: print("ur print formatting sux") 
+	print("\nNew project created\nName:%s\nDescription:%s\nFramerate:%s\nID:%s\n\n" % (name,desc,rate,task_id))
 
 	try:
 		request.files
@@ -77,10 +75,9 @@ def NewProject():
 
 @app.route("/api/v1/project/<string:project_id>",methods=["GET"])
 def project(project_id):
-	print (ObjectId(project_id))
-	myquery = {"_id":ObjectId(project_id)}
+	query = {"_id":ObjectId(project_id)}
 
-	ret = projects.find(myquery)
+	ret = projects.find(query)
 
 	return dumps(ret[0])
 
@@ -98,4 +95,4 @@ def serve(path):
         return "404: File not found at " + path + " as of now.";
 
 if __name__ == "__main__":
-	app.run(host='0.0.0.0',port=5000,debug=True)  # delet when deploying
+	app.run(host='0.0.0.0',port=5000,debug=True)
