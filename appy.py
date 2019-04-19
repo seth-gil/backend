@@ -27,7 +27,7 @@ def AnimateFolder(imgFolder,video,rate):
 	vidPathA = os.path.join("root",imgFolder,video+".avi")
 	vidPathM = os.path.join("root",imgFolder,"preview"+".mp4")
 
-	for item in os.path.join("root",imgFolder):
+	for item in os.listdir(os.path.join("root",imgFolder)):
 		print (item)
 		if os.path.isfile(os.path.join("root",imgFolder,item)):
 			im = Image.open(os.path.join("root",imgFolder))
