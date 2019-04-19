@@ -23,8 +23,6 @@ def AnimateFolder(imgFolder,video,rate):
 	frame = cv2.imread(os.path.join("root",imgFolder, images[0]))
 	height, width, layers = frame.shape
 
-	width,height = 400, 300
-
 	vidPathA = os.path.join("root",imgFolder,video+".avi")
 	vidPathM = os.path.join("root",imgFolder,"preview"+".mp4")
 
