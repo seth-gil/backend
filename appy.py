@@ -109,7 +109,8 @@ def project(project_id):
 
 		return json.dumps(niceRet)
 	except:
-		abort(404)
+		ret = {"type":"error","message":"File not found!"}
+		return json.dumps(ret)
 
 	
 
