@@ -84,6 +84,7 @@ def NewProject():
 	# 	i = i+1
 
 	i = 0
+	data = {}
 	for frame in frames:
 		#frame.replace("^data:image/.+;base64,", "")
 		data["img"] = frame
