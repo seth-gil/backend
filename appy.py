@@ -1,6 +1,6 @@
 # Main Flask container
 
-from flask import Flask, send_from_directory, request
+from flask import Flask, render_template, send_from_directory, request
 from flask_cors import CORS
 import os
 import cv2
@@ -15,7 +15,8 @@ from io import BytesIO
 
 
 # Flask setup
-app = Flask(__name__, static_folder='root/')
+app = Flask(__name__, static_folder='root')
+app.config["TEMPLATES_AUTO_RELOAD"] = True
 CORS(app);
 
 # Mongodb setup
@@ -47,8 +48,12 @@ def AnimateFolder(imgFolder,video,rate):
 		video.write(cv2.imread(os.path.join("root",imgFolder,image)))
 
 	video.release()
-
-	os.system("ffmpeg -y -i " + vidPathA + " " + vidPathM) #-b:v 2500k 
+	
+	os.system("pwd >> logged.txt")
+	os.system("whoami >> logged.txt")
+	os.system("echo $PATH >> logged.txt")
+	#os.system("whereis ffmpeg >> logged.txt")
+	os.system("/usr/bin/ffmpeg -y -i " + vidPathA + " " + vidPathM) #-b:v 2500k 
 	os.remove(vidPathA)
 	return vidPathM
 
@@ -62,8 +67,7 @@ def NewProject():
 	rate = request.json["framerate"]
 	frames = request.json["frames"]
 
-	newprj = {"name":name,
-			  "description":desc}
+	newprj = {"name":name, "description":desc}
 
 	task_id = projects.insert(newprj)
 	task_id = str(task_id)
@@ -128,10 +132,10 @@ def returnAll():
 @app.route('/', defaults={'path': ''})
 @app.route('/<path:path>')
 def serve(path):
-    if path != "" and os.path.exists(app.static_folder + path):
-        return send_from_directory(app.static_folder, path)
+    if path != "" and os.path.exists(os.path.join(app.static_folder,path)):
+    	return send_from_directory(app.static_folder, path)
     else:
-        return send_from_directory(app.static_folder, "index.html");
+    	return send_from_directory(app.static_folder, "index.html");
 
 if __name__ == "__main__":
-	app.run(host='0.0.0.0',port=5000,debug=True)
+	app.run(host='0.0.0.0',debug=True)
