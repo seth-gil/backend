@@ -1,4 +1,5 @@
 # backend
+
 Backend for animatrix website
 
 # Dependencies
@@ -6,11 +7,19 @@ Backend for animatrix website
 Python version used: 3.6.7
 
 - [flask](http://flask.pocoo.org)
-
 - flask-cors
-
-- cv2
-
+- opencv-python
 - ffmpeg
-
 - pymongo
+
+# Bash scripts
+### react.sh
+Usage
+    bash react.sh
+Purpose
+Copies latest build from [frontend](https://github.com/seth-gil/frontend) repo into the `/root` directory.
+### restart.sh
+Usage
+    bash restart.sh
+Purpose
+Restarts all background processes so that file updates become visible.
