@@ -49,10 +49,6 @@ def AnimateFolder(imgFolder,video,rate):
 
 	video.release()
 	
-	os.system("pwd >> logged.txt")
-	os.system("whoami >> logged.txt")
-	os.system("echo $PATH >> logged.txt")
-	#os.system("whereis ffmpeg >> logged.txt")
 	os.system("/usr/bin/ffmpeg -y -i " + vidPathA + " " + vidPathM) #-b:v 2500k 
 	os.remove(vidPathA)
 	return vidPathM
@@ -67,7 +63,8 @@ def NewProject():
 	rate = request.json["framerate"]
 	frames = request.json["frames"]
 
-	newprj = {"name":name, "description":desc}
+	newprj = {"name":name,
+			  "description":desc}
 
 	task_id = projects.insert(newprj)
 	task_id = str(task_id)

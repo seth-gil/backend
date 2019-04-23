@@ -1,0 +1,14 @@
+/home/ec2-user/app
+/home/ec2-user/app/env/bin
+/home/ec2-user/app
+/home/ec2-user/app/env/bin
+/home/ec2-user/app
+/home/ec2-user/app/env/bin
+/home/ec2-user/app
+/home/ec2-user/app/env/bin
+/home/ec2-user/app
+/home/ec2-user/app/env/bin
+/home/ec2-user/app
+/home/ec2-user/app/env/bin
+/home/ec2-user/app
+/home/ec2-user/app/env/bin
