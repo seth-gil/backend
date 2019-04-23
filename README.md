@@ -14,12 +14,9 @@ Python version used: 3.6.7
 
 # Bash scripts
 ### react.sh
-Usage
-    bash react.sh
-Purpose
+(`bash react.sh`)
 Copies latest build from [frontend](https://github.com/seth-gil/frontend) repo into the `/root` directory.
+
 ### restart.sh
-Usage
-    bash restart.sh
-Purpose
+(`bash restart.sh`)
 Restarts all background processes so that file updates become visible.
